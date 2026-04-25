@@ -18,13 +18,19 @@ npm run dev
 # → http://localhost:3000
 ```
 
-## Production build
+## Deploy
+
+### Vercel (recommended)
+
+Connect the GitHub repo to Vercel — it auto-detects Next.js and builds with `npm run build`. No extra configuration needed.
+
+### Hostinger / any FTP-only static host
 
 ```bash
-npm run build
+NEXT_OUTPUT=export npm run build
 ```
 
-Outputs a fully static site in `out/`. Upload the contents of `out/` to your Hostinger hosting via FTP/SFTP — root of the public web folder.
+Outputs a fully static site in `out/`. Upload the contents of `out/` to the public web folder via FTP/SFTP.
 
 ## Project structure
 
