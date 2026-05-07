@@ -2,136 +2,132 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import Wordmark from "./Wordmark";
+import { usePathname } from "next/navigation";
+import MagneticButton from "./MagneticButton";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/menu/", label: "Menu" },
-  { href: "/standorte/", label: "Standorte" },
-  { href: "/lieferung/", label: "Lieferung" },
-  { href: "/kontakt/", label: "Kontakt" },
+  { href: "/flavors", label: "Flavors" },
+  { href: "/lab", label: "The Lab" },
+  { href: "/beasts", label: "Beasts" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-  }, [open]);
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${
         scrolled
-          ? "border-b border-espresso/10 bg-cream/85 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
+          ? "bg-bone/85 backdrop-blur-md border-ink/10"
+          : "bg-transparent border-transparent"
       }`}
       style={{ height: "var(--nav-h)" }}
     >
-      <nav className="mx-auto flex h-full max-w-7xl items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/"
-          className="text-2xl md:text-3xl"
-          onClick={() => setOpen(false)}
+          className="flex items-center gap-2 font-display text-2xl tracking-[0.04em]"
+          aria-label="Monster White home"
         >
-          <Wordmark />
+          <span aria-hidden className="inline-block">
+            <svg width="22" height="28" viewBox="0 0 22 28" fill="none">
+              <g
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+              >
+                <path d="M3 3 L5 25" />
+                <path d="M11 2 L12 26" />
+                <path d="M19 4 L18 24" />
+              </g>
+            </svg>
+          </span>
+          <span>MONSTER</span>
+          <span className="text-volt-deep">WHITE</span>
         </Link>
 
-        <ul className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
-            <li key={l.href}>
+        <nav className="hidden items-center gap-1 lg:flex">
+          {links.map((l) => {
+            const active = pathname === l.href;
+            return (
               <Link
+                key={l.href}
                 href={l.href}
-                className="group relative rounded-full px-4 py-2 text-sm font-medium text-espresso/80 transition-colors duration-300 hover:text-espresso"
+                className={`relative px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] transition-colors ${
+                  active ? "text-ink" : "text-steel hover:text-ink"
+                }`}
               >
                 {l.label}
-                <span className="pointer-events-none absolute inset-x-4 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-300 group-hover:scale-x-100" />
+                {active && (
+                  <span className="absolute inset-x-4 -bottom-px h-[2px] bg-volt" />
+                )}
               </Link>
-            </li>
-          ))}
-        </ul>
+            );
+          })}
+        </nav>
 
-        <Link
-          href="/kontakt/"
-          className="hidden rounded-full bg-espresso px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-cream transition-colors hover:bg-amber hover:text-ink md:inline-flex"
-        >
-          Tisch reservieren
-        </Link>
+        <div className="hidden lg:block">
+          <MagneticButton href="/flavors" variant="ink" size="md">
+            Find Yours
+          </MagneticButton>
+        </div>
 
         <button
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
-          className="relative z-50 inline-flex h-10 w-10 items-center justify-center rounded-full text-espresso md:hidden"
-          onClick={() => setOpen((o) => !o)}
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="lg:hidden flex h-10 w-10 items-center justify-center border-2 border-ink"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          <span className="relative block h-3 w-5">
+            <span
+              className={`absolute inset-x-0 top-0 h-[2px] bg-ink transition-transform ${
+                open ? "translate-y-[6px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute inset-x-0 bottom-0 h-[2px] bg-ink transition-transform ${
+                open ? "-translate-y-[6px] -rotate-45" : ""
+              }`}
+            />
+          </span>
         </button>
-      </nav>
+      </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-cream md:hidden"
-            style={{ paddingTop: "var(--nav-h)" }}
-          >
-            <motion.ul
-              initial="hidden"
-              animate="visible"
-              variants={{
-                visible: { transition: { staggerChildren: 0.06 } },
-                hidden: {},
-              }}
-              className="flex flex-col gap-2 px-6 py-10"
-            >
-              {links.map((l) => (
-                <motion.li
-                  key={l.href}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0 },
-                  }}
-                >
-                  <Link
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="block border-b border-espresso/10 py-4 font-display text-3xl italic text-espresso"
-                  >
-                    {l.label}
-                  </Link>
-                </motion.li>
-              ))}
-              <motion.li
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-                className="mt-6"
+      {open && (
+        <div className="lg:hidden border-t border-ink/15 bg-bone">
+          <div className="mx-auto flex max-w-[1400px] flex-col px-5 py-4 sm:px-8">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="border-b border-ink/10 py-3 font-display text-2xl tracking-[0.04em]"
               >
-                <Link
-                  href="/kontakt/"
-                  onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-espresso px-6 py-4 text-sm font-semibold uppercase tracking-wider text-cream"
-                >
-                  Tisch reservieren
-                </Link>
-              </motion.li>
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {l.label}
+              </Link>
+            ))}
+            <div className="pt-4">
+              <MagneticButton href="/flavors" variant="ink" size="md">
+                Find Yours
+              </MagneticButton>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

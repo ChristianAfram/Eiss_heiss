@@ -1,103 +1,105 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import { Send, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import MagneticButton from "./MagneticButton";
+
+const intents = [
+  { value: "wholesale", label: "Wholesale" },
+  { value: "press", label: "Press" },
+  { value: "pack", label: "Apply to the pack" },
+  { value: "lab", label: "Ask the lab" },
+  { value: "other", label: "Other chaos" },
+];
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const subject = String(data.get("subject") || "Anfrage von der Webseite");
-    const message = String(data.get("message") || "");
-
-    const body = `Name: ${name}\nE-Mail: ${email}\n\n${message}`;
-    const href = `mailto:info@eis-und-heiss.de?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-    setSubmitted(true);
-  };
-
-  const inputCls =
-    "w-full rounded-2xl border border-espresso/15 bg-cream-soft px-4 py-3.5 text-sm text-espresso placeholder:text-espresso/40 transition-colors focus:border-espresso focus:outline-none focus:ring-2 focus:ring-amber/40";
+  const [intent, setIntent] = useState("wholesale");
+  const [sent, setSent] = useState(false);
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
-        <label className="block">
-          <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-espresso/60">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+      className="grid gap-6"
+      aria-label="Contact form"
+    >
+      <div className="grid gap-3">
+        <label className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
+          Intent
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {intents.map((i) => {
+            const active = intent === i.value;
+            return (
+              <button
+                key={i.value}
+                type="button"
+                onClick={() => setIntent(i.value)}
+                className={`border-2 border-ink px-4 py-2 font-display tracking-[0.18em] transition-colors ${
+                  active
+                    ? "bg-ink text-bone"
+                    : "bg-paper text-ink hover:bg-volt"
+                }`}
+              >
+                {i.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="grid gap-2">
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
             Name
           </span>
           <input
             required
-            name="name"
             type="text"
-            placeholder="Ihr Name"
-            className={inputCls}
+            placeholder="LAST FIRST"
+            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
           />
         </label>
-        <label className="block">
-          <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-espresso/60">
-            E-Mail
+        <label className="grid gap-2">
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
+            Email
           </span>
           <input
             required
-            name="email"
             type="email"
-            placeholder="ihre@email.de"
-            className={inputCls}
+            placeholder="YOU@WHEREVER.COM"
+            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
           />
         </label>
       </div>
-      <label className="block">
-        <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-espresso/60">
-          Betreff
-        </span>
-        <input
-          name="subject"
-          type="text"
-          placeholder="Reservierung, Event-Anfrage…"
-          className={inputCls}
-        />
-      </label>
-      <label className="block">
-        <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-espresso/60">
-          Nachricht
+
+      <label className="grid gap-2">
+        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
+          Message
         </span>
         <textarea
           required
-          name="message"
-          rows={5}
-          placeholder="Erzählen Sie uns, wie wir helfen können…"
-          className={`${inputCls} resize-none`}
+          rows={6}
+          placeholder="WHAT'S THE PLAN?"
+          className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
         />
       </label>
 
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        type="submit"
-        className="inline-flex items-center gap-2 rounded-full bg-espresso px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-colors hover:bg-amber hover:text-ink"
-      >
-        {submitted ? (
-          <>
-            <CheckCircle2 size={16} /> Mail geöffnet
-          </>
-        ) : (
-          <>
-            Nachricht senden
-            <Send size={14} />
-          </>
-        )}
-      </motion.button>
-      <p className="text-xs text-espresso/50">
-        Mit dem Absenden öffnet sich Ihr E-Mail-Programm — Sie behalten die volle Kontrolle.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
+          We read every one. We answer most.
+        </p>
+        <MagneticButton variant="ink" size="lg">
+          {sent ? "Sent ✓" : "Send It"}
+        </MagneticButton>
+      </div>
+
+      {sent && (
+        <p className="border-2 border-volt-deep bg-volt/40 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
+          ★ Locked in. We&apos;ll reply within two business days.
+        </p>
+      )}
     </form>
   );
 }

@@ -1,62 +1,84 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { useRef, type ReactNode, type MouseEvent } from "react";
 import Link from "next/link";
-import type { MouseEvent, ReactNode } from "react";
 
-type Props = {
-  href: string;
+type BaseProps = {
   children: ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "volt" | "ghost" | "ink";
+  size?: "md" | "lg";
   className?: string;
 };
+type LinkProps = BaseProps & { href: string; onClick?: never };
+type ButtonProps = BaseProps & {
+  href?: undefined;
+  onClick?: () => void;
+  type?: "button" | "submit";
+};
+type Props = LinkProps | ButtonProps;
 
-export default function MagneticButton({
-  href,
-  children,
-  variant = "primary",
-  className = "",
-}: Props) {
-  const reduce = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 200, damping: 18, mass: 0.4 });
-  const sy = useSpring(y, { stiffness: 200, damping: 18, mass: 0.4 });
+export default function MagneticButton(props: Props) {
+  const ref = useRef<HTMLSpanElement>(null);
 
-  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (reduce) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const dx = e.clientX - (r.left + r.width / 2);
-    const dy = e.clientY - (r.top + r.height / 2);
-    x.set(dx * 0.15);
-    y.set(dy * 0.15);
-  };
+  function handleMove(e: MouseEvent<HTMLElement>) {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+  }
+  function handleLeave() {
+    if (ref.current) ref.current.style.transform = "translate(0,0)";
+  }
 
-  const onLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const variantClasses = {
+    volt:
+      "bg-volt text-ink border-ink hover:shadow-volt",
+    ghost:
+      "bg-transparent text-ink border-ink hover:bg-ink hover:text-bone",
+    ink:
+      "bg-ink text-bone border-ink hover:bg-volt hover:text-ink hover:border-ink",
+  }[props.variant ?? "volt"];
 
-  const base =
-    "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-300 will-change-transform";
-  const styles =
-    variant === "primary"
-      ? "bg-espresso text-cream hover:bg-amber hover:text-ink"
-      : "border border-espresso/20 text-espresso hover:border-espresso hover:bg-espresso hover:text-cream";
+  const sizeClasses = {
+    md: "px-6 py-3 text-sm",
+    lg: "px-8 py-4 text-base",
+  }[props.size ?? "md"];
+
+  const baseClasses = `inline-flex items-center justify-center gap-2 border-2 font-display tracking-[0.18em] uppercase transition-[box-shadow,background-color,color] duration-200 ${variantClasses} ${sizeClasses} ${props.className ?? ""}`;
+
+  const inner = (
+    <span
+      ref={ref}
+      className="transition-transform duration-200 ease-out will-change-transform"
+    >
+      {props.children}
+    </span>
+  );
+
+  if ("href" in props && props.href) {
+    return (
+      <Link
+        href={props.href}
+        className={baseClasses}
+        onMouseMove={handleMove}
+        onMouseLeave={handleLeave}
+      >
+        {inner}
+      </Link>
+    );
+  }
 
   return (
-    <motion.div
-      style={{ x: sx, y: sy }}
-      className={`inline-block ${className}`}
+    <button
+      type={(props as ButtonProps).type ?? "button"}
+      onClick={(props as ButtonProps).onClick}
+      className={baseClasses}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
     >
-      <Link
-        href={href}
-        onMouseMove={onMove}
-        onMouseLeave={onLeave}
-        className={`${base} ${styles}`}
-      >
-        {children}
-      </Link>
-    </motion.div>
+      {inner}
+    </button>
   );
 }

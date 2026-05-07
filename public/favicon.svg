@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2A1810"/>
-  <text x="50%" y="58%" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="600" font-size="34" fill="#D4933F">E&amp;H</text>
+  <rect width="64" height="64" rx="10" fill="#050505"/>
+  <g stroke="#B8FF00" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M14 12 L22 52"/>
+    <path d="M28 10 L34 54"/>
+    <path d="M42 14 L48 50"/>
+  </g>
 </svg>

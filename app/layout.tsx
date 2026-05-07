@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz", "SOFT"],
-  display: "swap",
-});
+import GrainOverlay from "@/components/GrainOverlay";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,27 +11,34 @@ const inter = Inter({
   display: "swap",
 });
 
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bebas",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "EIS & HEISS Café — Mehr als ein Café. Ein Erlebnis für die ganze Familie.",
+  title: "MONSTER WHITE — Zero Sugar. Ultra Energy. Unleash The Beast.",
   description:
-    "Italienisches und arabisches Eis, Boutique-Frühstück, Desserts und Cocktails — in Ostfildern, Stuttgart und Pforzheim. Ein Ort voller Genuss und familiärer Wärme.",
+    "MONSTER WHITE is the white-out flavor of beast mode. Zero sugar, full chaos. Ultra energy concept brand.",
   keywords: [
-    "Eis",
-    "Café",
-    "Ostfildern",
-    "Stuttgart",
-    "Pforzheim",
-    "Frühstück",
-    "Italienisches Eis",
-    "Arabisches Eis",
-    "Waffeln",
-    "Cocktails",
+    "Monster White",
+    "Ultra",
+    "Energy Drink",
+    "Zero Sugar",
+    "Beast Mode",
+    "Concept Brand",
   ],
   openGraph: {
-    title: "EIS & HEISS Café",
-    description:
-      "Italienisches und arabisches Eis, Boutique-Frühstück, Desserts und Cocktails.",
-    locale: "de_DE",
+    title: "MONSTER WHITE",
+    description: "Zero Sugar. Ultra Energy. Unleash The Beast.",
     type: "website",
   },
 };
@@ -46,8 +47,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="grain min-h-screen bg-cream text-espresso">
+    <html
+      lang="en"
+      className={`${inter.variable} ${bebas.variable} ${mono.variable}`}
+    >
+      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-volt selection:text-ink">
+        <GrainOverlay />
         <Navbar />
         <main className="pt-[var(--nav-h)]">{children}</main>
         <Footer />
