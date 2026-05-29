@@ -12,7 +12,7 @@ export default function FlavorCard({
   return (
     <Link
       href="/flavors"
-      className="group relative block brutal-card brutal-card-volt p-6 sm:p-8"
+      className="group relative block brutal-card brutal-card-ice p-6 sm:p-8"
     >
       <div className="flex items-start justify-between font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
         <span>NO. {String(index + 1).padStart(2, "0")}</span>

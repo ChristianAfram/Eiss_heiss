@@ -51,7 +51,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${bebas.variable} ${mono.variable}`}
     >
-      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-volt selection:text-ink">
+      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-ice selection:text-ink">
         <GrainOverlay />
         <Navbar />
         <main className="pt-[var(--nav-h)]">{children}</main>

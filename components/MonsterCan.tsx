@@ -1,83 +1,65 @@
+import ClawLogo from "./ClawLogo";
+import Wordmark from "./Wordmark";
+
+type Variant = "white" | "ice" | "blanc" | "ghost" | "salt" | "frost";
+
 type Props = {
-  variant?: "white" | "ice" | "blanc" | "ghost" | "salt" | "frost";
+  variant?: Variant;
   label?: string;
   tagline?: string;
   className?: string;
   floating?: boolean;
 };
 
-const variantStyles: Record<
-  NonNullable<Props["variant"]>,
-  { body: string; sheen: string; accent: string; ink: string }
-> = {
-  white: {
-    body: "linear-gradient(180deg, #ffffff 0%, #f0f0ec 50%, #d8d8d2 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0))",
-    accent: "#B8FF00",
-    ink: "#050505",
-  },
-  ice: {
-    body: "linear-gradient(180deg, #f5fbff 0%, #d8ecf6 60%, #aac6d6 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0))",
-    accent: "#00F0FF",
-    ink: "#050505",
-  },
-  blanc: {
-    body: "linear-gradient(180deg, #fffaf2 0%, #f4ead4 60%, #d6c9a8 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0))",
-    accent: "#E8B46C",
-    ink: "#050505",
-  },
-  ghost: {
-    body: "linear-gradient(180deg, #f8f8f8 0%, #d0d0d0 60%, #888888 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0))",
-    accent: "#B8FF00",
-    ink: "#0a0a0a",
-  },
-  salt: {
-    body: "linear-gradient(180deg, #ffffff 0%, #ecf0e8 60%, #b8c9a5 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0))",
-    accent: "#8fcc00",
-    ink: "#050505",
-  },
-  frost: {
-    body: "linear-gradient(180deg, #ffffff 0%, #e3e6ee 55%, #9aa3c0 100%)",
-    sheen: "linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0))",
-    accent: "#B8FF00",
-    ink: "#050505",
-  },
+const bodies: Record<Variant, string> = {
+  white: "linear-gradient(180deg, #ffffff 0%, #f1f3f4 55%, #d9dde0 100%)",
+  ice: "linear-gradient(180deg, #fbfeff 0%, #e2f1f8 58%, #c0dae6 100%)",
+  blanc: "linear-gradient(180deg, #fffdf8 0%, #f4efe3 58%, #ddd3c1 100%)",
+  ghost: "linear-gradient(180deg, #fafafa 0%, #e2e4e6 58%, #c2c6c9 100%)",
+  salt: "linear-gradient(180deg, #ffffff 0%, #eef2f0 58%, #d2ddd6 100%)",
+  frost: "linear-gradient(180deg, #ffffff 0%, #e7ebf2 56%, #c6cedd 100%)",
+};
+
+const accents: Record<Variant, string> = {
+  white: "#1f9fd1",
+  ice: "#00b4d8",
+  blanc: "#c79a4e",
+  ghost: "#6b7177",
+  salt: "#3aa66f",
+  frost: "#5a78d6",
 };
 
 export default function MonsterCan({
   variant = "white",
   label = "WHITE",
-  tagline = "ZERO SUGAR · ULTRA",
+  tagline = "ZERO ZUCKER",
   className = "",
   floating = false,
 }: Props) {
-  const v = variantStyles[variant];
+  const accent = accents[variant];
   return (
     <div
       className={`relative ${floating ? "animate-float" : ""} ${className}`}
-      aria-label={`Monster ${label} can`}
+      aria-label={`Monster Energy Ultra ${label} can`}
     >
       <div
         className="relative mx-auto"
         style={{
-          width: "200px",
-          height: "420px",
-          filter: "drop-shadow(0 30px 30px rgba(0,0,0,0.25))",
+          width: "204px",
+          height: "430px",
+          filter: "drop-shadow(0 34px 30px rgba(0,0,0,0.28))",
         }}
       >
         {/* Top rim */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 rounded-[40%] border border-black/20"
+          className="absolute left-1/2 -translate-x-1/2 rounded-[45%]"
           style={{
-            top: "0",
-            width: "180px",
+            top: 0,
+            width: "176px",
             height: "26px",
             background:
-              "linear-gradient(180deg, #d6d6d2 0%, #f4f4f1 50%, #c0c0bd 100%)",
+              "linear-gradient(180deg, #cfd2d4 0%, #f6f7f8 45%, #b6babd 100%)",
+            border: "1px solid rgba(0,0,0,0.18)",
             zIndex: 3,
           }}
         />
@@ -85,112 +67,97 @@ export default function MonsterCan({
         <div
           className="absolute left-1/2 -translate-x-1/2 overflow-hidden"
           style={{
-            top: "18px",
-            width: "182px",
-            height: "388px",
-            borderRadius: "14px",
-            background: v.body,
-            border: "1px solid rgba(0,0,0,0.15)",
+            top: "16px",
+            width: "184px",
+            height: "402px",
+            borderRadius: "16px",
+            background: bodies[variant],
+            border: "1px solid rgba(0,0,0,0.14)",
             zIndex: 2,
           }}
         >
-          {/* Highlight */}
+          {/* Filigree */}
+          <div className="absolute inset-0 bg-filigree opacity-[0.28]" />
+          {/* Left sheen */}
           <div
-            className="absolute"
+            className="absolute inset-y-0"
             style={{
-              top: 0,
-              left: "10%",
-              width: "20%",
-              height: "100%",
-              background: v.sheen,
-              opacity: 0.6,
-            }}
-          />
-          {/* Side shadow */}
-          <div
-            className="absolute"
-            style={{
-              top: 0,
-              right: 0,
+              left: "8%",
               width: "22%",
-              height: "100%",
               background:
-                "linear-gradient(270deg, rgba(0,0,0,0.18), rgba(0,0,0,0))",
+                "linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0))",
+              opacity: 0.7,
             }}
           />
-          {/* Claw mark */}
-          <div className="absolute inset-0 flex items-start justify-center pt-12">
-            <svg
-              viewBox="0 0 120 160"
-              width="100"
-              height="130"
-              fill="none"
-              aria-hidden
-            >
-              <g
-                stroke={v.accent}
-                strokeWidth="5"
-                strokeLinecap="round"
-                opacity="0.95"
-              >
-                <path d="M22 8 C 30 60, 32 110, 28 152" />
-                <path d="M50 4 C 56 60, 58 116, 50 156" />
-                <path d="M78 8 C 80 60, 80 116, 70 154" />
-                <path d="M102 14 C 100 60, 98 110, 90 150" />
-              </g>
-            </svg>
-          </div>
-          {/* Wordmark */}
+          {/* Right shadow */}
+          <div
+            className="absolute inset-y-0 right-0"
+            style={{
+              width: "26%",
+              background:
+                "linear-gradient(270deg, rgba(0,0,0,0.16), rgba(0,0,0,0))",
+            }}
+          />
+
+          {/* ZERO ZUCKER */}
           <div
             className="absolute left-0 right-0 text-center font-display"
             style={{
-              top: "50%",
-              color: v.ink,
-              fontSize: "30px",
-              letterSpacing: "0.04em",
-              transform: "translateY(-50%)",
-            }}
-          >
-            MONSTER
-          </div>
-          <div
-            className="absolute left-0 right-0 text-center font-display"
-            style={{
-              top: "62%",
-              color: v.accent,
-              fontSize: "44px",
-              letterSpacing: "0.06em",
-              textShadow: `0 0 12px ${v.accent}55`,
-            }}
-          >
-            {label}
-          </div>
-          {/* Tagline */}
-          <div
-            className="absolute left-0 right-0 text-center font-mono"
-            style={{
-              top: "75%",
-              color: v.ink,
-              fontSize: "9px",
-              letterSpacing: "0.2em",
-              opacity: 0.75,
+              top: "7%",
+              color: "#0a0a0a",
+              fontSize: "15px",
+              letterSpacing: "0.16em",
             }}
           >
             {tagline}
           </div>
-          {/* Barcode-ish bottom */}
+
+          {/* Claw */}
+          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: "15%" }}>
+            <ClawLogo className="h-[150px] w-[124px]" tone="silver" />
+          </div>
+
+          {/* Wordmark */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 text-center"
+            style={{ top: "58%" }}
+          >
+            <Wordmark size="md" ultra tone="ink" />
+          </div>
+
+          {/* Flavor tag */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{ bottom: "13%" }}
+          >
+            <span
+              className="font-display"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.28em",
+                color: "#fff",
+                background: accent,
+                padding: "3px 12px",
+                borderRadius: "999px",
+              }}
+            >
+              {label}
+            </span>
+          </div>
+
+          {/* Barcode */}
           <div
             className="absolute left-0 right-0 flex justify-center gap-[2px]"
-            style={{ bottom: "22px" }}
+            style={{ bottom: "26px" }}
           >
-            {[3, 1, 2, 1, 3, 2, 1, 3, 1, 2].map((w, i) => (
+            {[3, 1, 2, 1, 3, 2, 1, 3, 1, 2, 2, 1].map((w, i) => (
               <span
                 key={i}
                 style={{
                   width: `${w}px`,
-                  height: "16px",
-                  background: v.ink,
-                  opacity: 0.55,
+                  height: "14px",
+                  background: "#0a0a0a",
+                  opacity: 0.6,
                 }}
               />
             ))}
@@ -199,25 +166,24 @@ export default function MonsterCan({
           <div
             className="absolute left-0 right-0 text-center font-mono"
             style={{
-              bottom: "6px",
-              color: v.ink,
+              bottom: "8px",
+              color: "#0a0a0a",
               fontSize: "9px",
               letterSpacing: "0.18em",
               opacity: 0.7,
             }}
           >
-            500 ML
+            500 ML · ZERO SUGAR
           </div>
         </div>
         {/* Bottom rim */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 rounded-[40%]"
+          className="absolute left-1/2 -translate-x-1/2 rounded-[45%]"
           style={{
-            bottom: "0",
-            width: "180px",
+            bottom: 0,
+            width: "176px",
             height: "16px",
-            background:
-              "linear-gradient(180deg, #b8b8b5 0%, #80807e 100%)",
+            background: "linear-gradient(180deg, #b4b8bb 0%, #7c8084 100%)",
             zIndex: 3,
           }}
         />

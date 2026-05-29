@@ -39,7 +39,7 @@ export default function ContactForm() {
                 className={`border-2 border-ink px-4 py-2 font-display tracking-[0.18em] transition-colors ${
                   active
                     ? "bg-ink text-bone"
-                    : "bg-paper text-ink hover:bg-volt"
+                    : "bg-paper text-ink hover:bg-ice"
                 }`}
               >
                 {i.label}
@@ -58,7 +58,7 @@ export default function ContactForm() {
             required
             type="text"
             placeholder="LAST FIRST"
-            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
+            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-ice/20"
           />
         </label>
         <label className="grid gap-2">
@@ -69,7 +69,7 @@ export default function ContactForm() {
             required
             type="email"
             placeholder="YOU@WHEREVER.COM"
-            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
+            className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-ice/20"
           />
         </label>
       </div>
@@ -82,7 +82,7 @@ export default function ContactForm() {
           required
           rows={6}
           placeholder="WHAT'S THE PLAN?"
-          className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-volt/20"
+          className="border-2 border-ink bg-paper px-4 py-3 font-mono text-sm uppercase tracking-[0.1em] focus:outline-none focus:bg-ice/20"
         />
       </label>
 
@@ -96,7 +96,7 @@ export default function ContactForm() {
       </div>
 
       {sent && (
-        <p className="border-2 border-volt-deep bg-volt/40 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
+        <p className="border-2 border-ice-deep bg-ice/40 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
           ★ Locked in. We&apos;ll reply within two business days.
         </p>
       )}

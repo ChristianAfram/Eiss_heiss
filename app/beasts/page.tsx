@@ -17,20 +17,20 @@ export default function BeastsPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-graphite text-bone">
-        <div className="absolute inset-0 bg-grid opacity-[0.07]" aria-hidden />
+        <div className="absolute inset-0 bg-filigree opacity-[0.07]" aria-hidden />
         <ClawMark
           className="pointer-events-none absolute -top-12 right-10 h-[480px] w-[320px] opacity-30"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={11}
         />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
-          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-volt">
+          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-ice">
             ⌬ THE PACK
           </p>
           <h1 className="mt-4 font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tight">
             BEASTS,
             <br />
-            <span className="text-volt glow-volt">NOT FANS.</span>
+            <span className="text-ice glow-ice">NOT FANS.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
             Athletes, producers, surgeons, surfers, students. The kind of
@@ -47,7 +47,7 @@ export default function BeastsPage() {
           "WE DON'T DO FANS",
           "WE DO LIFERS",
         ]}
-        variant="volt"
+        variant="ice"
       />
 
       <section className="bg-bone">
@@ -106,7 +106,7 @@ export default function BeastsPage() {
                 ))}
               </div>
               <div className="mt-10">
-                <MagneticButton href="/contact" variant="volt" size="lg">
+                <MagneticButton href="/contact" variant="ice" size="lg">
                   Apply To The Pack
                 </MagneticButton>
               </div>

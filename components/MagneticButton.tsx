@@ -5,7 +5,7 @@ import Link from "next/link";
 
 type BaseProps = {
   children: ReactNode;
-  variant?: "volt" | "ghost" | "ink";
+  variant?: "ice" | "ghost" | "ink";
   size?: "md" | "lg";
   className?: string;
 };
@@ -33,13 +33,13 @@ export default function MagneticButton(props: Props) {
   }
 
   const variantClasses = {
-    volt:
-      "bg-volt text-ink border-ink hover:shadow-volt",
+    ice:
+      "bg-ice text-ink border-ink hover:shadow-ice",
     ghost:
       "bg-transparent text-ink border-ink hover:bg-ink hover:text-bone",
     ink:
-      "bg-ink text-bone border-ink hover:bg-volt hover:text-ink hover:border-ink",
-  }[props.variant ?? "volt"];
+      "bg-ink text-bone border-ink hover:bg-ice hover:text-ink hover:border-ink",
+  }[props.variant ?? "ice"];
 
   const sizeClasses = {
     md: "px-6 py-3 text-sm",

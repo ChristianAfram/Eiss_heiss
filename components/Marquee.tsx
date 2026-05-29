@@ -1,6 +1,6 @@
 type Props = {
   items: string[];
-  variant?: "light" | "dark" | "volt";
+  variant?: "light" | "dark" | "ice";
   speed?: "slow" | "normal" | "fast";
   reverse?: boolean;
   className?: string;
@@ -16,7 +16,7 @@ export default function Marquee({
   const variantClass = {
     light: "bg-bone text-ink border-y-2 border-ink",
     dark: "bg-ink text-bone border-y-2 border-ink",
-    volt: "bg-volt text-ink border-y-2 border-ink",
+    ice: "bg-ice text-ink border-y-2 border-ink",
   }[variant];
   const speedClass = reverse
     ? "animate-marquee-rev"
@@ -37,7 +37,7 @@ export default function Marquee({
             className="font-display text-[clamp(2rem,5vw,4rem)] leading-none px-6 py-3"
           >
             {it}
-            <span className="inline-block px-6 align-middle text-volt-deep">
+            <span className="inline-block px-6 align-middle text-ice-deep">
               ✦
             </span>
           </span>

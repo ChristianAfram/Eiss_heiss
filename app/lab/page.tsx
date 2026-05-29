@@ -17,25 +17,25 @@ export default function LabPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-ink text-bone">
-        <div className="absolute inset-0 bg-grid opacity-[0.07]" aria-hidden />
+        <div className="absolute inset-0 bg-filigree opacity-[0.07]" aria-hidden />
         <ClawMark
           className="pointer-events-none absolute -top-12 -left-10 h-[480px] w-[320px] opacity-30"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={11}
         />
         <ClawMark
           className="pointer-events-none absolute bottom-10 right-0 h-[420px] w-[300px] -scale-x-100 opacity-30"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={11}
         />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
-          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-volt">
+          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-ice">
             // THE LAB
           </p>
           <h1 className="mt-4 font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tight">
             INSIDE
             <br />
-            <span className="text-volt glow-volt">THE CAN.</span>
+            <span className="text-ice glow-ice">THE CAN.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
             Every batch is built around a 35–95 minute focus curve. We walk
@@ -59,9 +59,9 @@ export default function LabPage() {
           <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {lab.map((phase, i) => (
               <ScrollReveal key={phase.title} delay={i * 0.07}>
-                <article className="brutal-card brutal-card-volt p-8">
+                <article className="brutal-card brutal-card-ice p-8">
                   <div className="flex items-baseline justify-between">
-                    <span className="font-display text-6xl text-volt-deep">
+                    <span className="font-display text-6xl text-ice-deep">
                       0{i + 1}
                     </span>
                     <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
@@ -90,7 +90,7 @@ export default function LabPage() {
           "REPEAT",
           "DON'T BLINK",
         ]}
-        variant="volt"
+        variant="ice"
         speed="slow"
       />
 
@@ -130,7 +130,7 @@ export default function LabPage() {
                       <td className="py-4 pr-4 font-display text-xl tracking-[0.04em]">
                         {row.label}
                       </td>
-                      <td className="py-4 pr-4 font-display text-xl text-volt">
+                      <td className="py-4 pr-4 font-display text-xl text-ice">
                         {row.value}
                       </td>
                       <td className="py-4 text-sm text-mist">

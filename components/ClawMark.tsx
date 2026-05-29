@@ -7,7 +7,7 @@ type Props = {
 
 export default function ClawMark({
   className = "",
-  color = "#B8FF00",
+  color = "#6dcff6",
   strokeWidth = 8,
   animated = true,
 }: Props) {

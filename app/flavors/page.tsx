@@ -16,10 +16,10 @@ export default function FlavorsPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-bone">
-        <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
+        <div className="absolute inset-0 bg-filigree opacity-50" aria-hidden />
         <ClawMark
           className="pointer-events-none absolute -top-6 right-0 h-[360px] w-[280px] opacity-50"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={9}
         />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
@@ -29,7 +29,7 @@ export default function FlavorsPage() {
           <h1 className="mt-4 font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tight">
             SIX
             <br />
-            <span className="text-volt-deep glow-volt">SHADES.</span>
+            <span className="text-ice-deep glow-ice">SHADES.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-graphite sm:text-lg">
             Same chassis. Different weather. Each flavor is a tuned response
@@ -62,7 +62,7 @@ export default function FlavorsPage() {
                     <h2 className="mt-3 font-display text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-tight">
                       {f.name}
                     </h2>
-                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.25em] text-volt-deep">
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.25em] text-ice-deep">
                       {f.kicker}
                     </p>
                     <p className="mt-6 max-w-xl text-base leading-relaxed text-graphite">
@@ -99,7 +99,7 @@ export default function FlavorsPage() {
                     <div className="relative">
                       <div
                         aria-hidden
-                        className="absolute inset-0 -z-10 bg-gradient-to-br from-volt/30 to-transparent blur-3xl"
+                        className="absolute inset-0 -z-10 bg-gradient-to-br from-ice/30 to-transparent blur-3xl"
                       />
                       <MonsterCan
                         variant={f.canVariant}
@@ -116,7 +116,7 @@ export default function FlavorsPage() {
         </div>
       </section>
 
-      <section className="bg-volt">
+      <section className="bg-ice">
         <div className="mx-auto flex max-w-[1400px] flex-col items-center px-5 py-20 text-center sm:px-8">
           <h2 className="font-display text-[clamp(2.5rem,8vw,6rem)] leading-[0.9] tracking-tight text-ink">
             CAN&apos;T DECIDE?

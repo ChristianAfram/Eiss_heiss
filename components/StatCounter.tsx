@@ -50,7 +50,7 @@ export default function StatCounter({
     <div ref={ref} className="flex flex-col">
       <div className="font-display text-[clamp(3rem,8vw,5.5rem)] leading-none tracking-tight">
         {value.toFixed(decimals)}
-        {unit && <span className="text-volt-deep">{unit}</span>}
+        {unit && <span className="text-ice-deep">{unit}</span>}
       </div>
       <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
         {label}

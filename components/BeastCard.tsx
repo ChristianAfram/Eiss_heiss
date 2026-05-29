@@ -8,7 +8,7 @@ export default function BeastCard({
   index: number;
 }) {
   return (
-    <article className="group relative overflow-hidden border-2 border-bone/30 bg-graphite p-6 sm:p-8 transition-colors hover:border-volt">
+    <article className="group relative overflow-hidden border-2 border-bone/30 bg-graphite p-6 sm:p-8 transition-colors hover:border-ice">
       <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.25em] text-fog">
         <span>BEAST_{String(index + 1).padStart(3, "0")}</span>
         <span>{beast.discipline}</span>
@@ -16,7 +16,7 @@ export default function BeastCard({
 
       <div className="mt-6 flex items-center gap-4">
         <div
-          className="flex h-16 w-16 shrink-0 items-center justify-center border-2 border-bone/30 font-display text-2xl text-volt"
+          className="flex h-16 w-16 shrink-0 items-center justify-center border-2 border-bone/30 font-display text-2xl text-ice"
           style={{
             background: `linear-gradient(135deg, ${beast.gradient[0]}, ${beast.gradient[1]})`,
           }}
@@ -43,7 +43,7 @@ export default function BeastCard({
             <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-fog">
               {s.label}
             </dt>
-            <dd className="mt-1 font-display text-xl text-volt">{s.value}</dd>
+            <dd className="mt-1 font-display text-xl text-ice">{s.value}</dd>
           </div>
         ))}
       </dl>

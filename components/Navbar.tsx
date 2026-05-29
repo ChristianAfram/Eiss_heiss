@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import MagneticButton from "./MagneticButton";
+import ClawLogo from "./ClawLogo";
 
 const links = [
   { href: "/flavors", label: "Flavors" },
@@ -43,21 +44,14 @@ export default function Navbar() {
           className="flex items-center gap-2 font-display text-2xl tracking-[0.04em]"
           aria-label="Monster White home"
         >
-          <span aria-hidden className="inline-block">
-            <svg width="22" height="28" viewBox="0 0 22 28" fill="none">
-              <g
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-              >
-                <path d="M3 3 L5 25" />
-                <path d="M11 2 L12 26" />
-                <path d="M19 4 L18 24" />
-              </g>
-            </svg>
-          </span>
+          <ClawLogo
+            className="h-8 w-7"
+            tone="black"
+            halftone={false}
+            title="Monster White"
+          />
           <span>MONSTER</span>
-          <span className="text-volt-deep">WHITE</span>
+          <span className="text-ice-deep">WHITE</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -73,7 +67,7 @@ export default function Navbar() {
               >
                 {l.label}
                 {active && (
-                  <span className="absolute inset-x-4 -bottom-px h-[2px] bg-volt" />
+                  <span className="absolute inset-x-4 -bottom-px h-[2px] bg-ice" />
                 )}
               </Link>
             );

@@ -20,7 +20,7 @@ export default function NewsletterForm() {
       />
       <button
         type="submit"
-        className="bg-volt px-5 font-display tracking-[0.18em] text-ink hover:bg-bone"
+        className="bg-ice px-5 font-display tracking-[0.18em] text-ink hover:bg-bone"
       >
         {sent ? "✓" : "Sign"}
       </button>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ClawMark from "@/components/ClawMark";
+import ClawLogo from "@/components/ClawLogo";
 import MonsterCan from "@/components/MonsterCan";
 import Marquee from "@/components/Marquee";
 import MagneticButton from "@/components/MagneticButton";
@@ -17,40 +18,41 @@ export default function Home() {
     <>
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden bg-bone">
-        <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
-        <ClawMark
-          className="pointer-events-none absolute -top-10 -left-16 h-[420px] w-[320px] opacity-80 sm:opacity-90"
-          color="#B8FF00"
-          strokeWidth={10}
+        <div className="absolute inset-0 bg-filigree opacity-50" aria-hidden />
+        <ClawLogo
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[120vh] w-[105vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.05]"
+          tone="black"
+          halftone={false}
         />
         <ClawMark
-          className="pointer-events-none absolute bottom-10 right-[-40px] h-[360px] w-[280px] -scale-x-100 opacity-60"
-          color="#050505"
-          strokeWidth={6}
-          animated={false}
+          className="pointer-events-none absolute -top-10 -left-16 h-[420px] w-[320px] opacity-40 sm:opacity-50"
+          color="#6dcff6"
+          strokeWidth={10}
         />
 
         <div className="relative mx-auto grid min-h-[88vh] max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-steel">
-              <span className="mr-3 inline-block h-2 w-2 translate-y-[-2px] bg-volt align-middle" />
-              ZERO SUGAR · ULTRA ENERGY · CONCEPT BRAND
+              <span className="mr-3 inline-block h-2 w-2 translate-y-[-2px] bg-ice-deep align-middle" />
+              ZERO ZUCKER · ULTRA ENERGY
             </p>
 
-            <h1 className="mt-6 font-display leading-[0.82] tracking-tight">
-              <span className="block text-[clamp(4.5rem,16vw,12rem)]">
+            <h1 className="mt-6 font-display leading-[0.8] tracking-tight">
+              <span className="block text-[clamp(4.5rem,16vw,12rem)] text-ink">
                 MONSTER
               </span>
-              <span className="relative block text-[clamp(4.5rem,16vw,12rem)]">
-                <span className="relative z-10 text-volt-deep glow-volt">
-                  WHITE
-                </span>
+              <span className="relative block w-fit text-[clamp(4.5rem,16vw,12rem)]">
+                <span className="relative z-10 text-chrome-grad">WHITE</span>
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-1/2 z-0 h-[12%] -translate-y-1/2 bg-ink"
+                  className="absolute -bottom-1 left-0 z-0 h-[8px] w-full bg-ice-deep"
                 />
               </span>
             </h1>
+
+            <p className="mt-5 font-display text-[clamp(0.9rem,2vw,1.3rem)] tracking-[0.4em] text-ice-deep">
+              ENERGY · ULTRA · ZERO
+            </p>
 
             <p className="mt-8 max-w-xl text-base leading-relaxed text-graphite sm:text-lg">
               The white-out flavor of beast mode. Engineered for the kind of
@@ -73,7 +75,7 @@ export default function Home() {
                   Caffeine
                 </dt>
                 <dd className="mt-1 font-display text-3xl">
-                  160<span className="text-volt-deep">MG</span>
+                  160<span className="text-ice-deep">MG</span>
                 </dd>
               </div>
               <div>
@@ -81,7 +83,7 @@ export default function Home() {
                   Sugar
                 </dt>
                 <dd className="mt-1 font-display text-3xl">
-                  00<span className="text-volt-deep">G</span>
+                  00<span className="text-ice-deep">G</span>
                 </dd>
               </div>
               <div>
@@ -89,7 +91,7 @@ export default function Home() {
                   Calories
                 </dt>
                 <dd className="mt-1 font-display text-3xl">
-                  10<span className="text-volt-deep">KCAL</span>
+                  10<span className="text-ice-deep">KCAL</span>
                 </dd>
               </div>
             </dl>
@@ -99,7 +101,7 @@ export default function Home() {
             <div className="relative mx-auto flex max-w-md items-center justify-center">
               <div
                 aria-hidden
-                className="absolute inset-0 -z-10 bg-gradient-to-br from-volt/40 via-bone to-bone blur-3xl"
+                className="absolute inset-0 -z-10 bg-gradient-to-br from-ice/40 via-bone to-bone blur-3xl"
               />
               <div className="absolute inset-0 -z-10 flex items-center justify-center">
                 <div className="h-72 w-72 rounded-full border-2 border-ink/20" />
@@ -144,7 +146,7 @@ export default function Home() {
             <ScrollReveal delay={0.1} className="lg:col-span-7">
               <p className="text-xl leading-relaxed text-graphite sm:text-2xl">
                 We&apos;re not selling a beverage. We&apos;re selling a
-                <span className="bg-ink px-2 text-volt"> mode </span>—
+                <span className="bg-ink px-2 text-ice"> mode </span>—
                 the second between the alarm and the answer, between the
                 drop-in and the line, between the cursor and the verdict.
               </p>
@@ -211,7 +213,7 @@ export default function Home() {
           "B3 · B5 · B6 · B12",
           "L-CARNITINE",
         ]}
-        variant="volt"
+        variant="ice"
         reverse
       />
 
@@ -219,7 +221,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-ink text-bone">
         <ClawMark
           className="pointer-events-none absolute -top-20 right-0 h-[480px] w-[360px] opacity-30"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={14}
         />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
@@ -284,7 +286,7 @@ export default function Home() {
               {lab.map((phase, i) => (
                 <ScrollReveal key={phase.title} delay={i * 0.07}>
                   <li className="grid grid-cols-[64px_1fr] items-start gap-4 border-2 border-ink bg-paper p-6 transition-colors hover:bg-ink hover:text-bone">
-                    <span className="font-display text-4xl text-volt-deep">
+                    <span className="font-display text-4xl text-ice-deep">
                       0{i + 1}
                     </span>
                     <div>
@@ -305,7 +307,7 @@ export default function Home() {
 
       {/* ───────────── BEASTS ───────────── */}
       <section className="relative overflow-hidden bg-graphite text-bone">
-        <div className="absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+        <div className="absolute inset-0 bg-filigree opacity-[0.06]" aria-hidden />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
             <ScrollReveal>
@@ -349,8 +351,8 @@ export default function Home() {
       />
 
       {/* ───────────── CTA ───────────── */}
-      <section className="relative overflow-hidden bg-volt">
-        <div className="absolute inset-0 bg-grid-tight opacity-30" aria-hidden />
+      <section className="relative overflow-hidden bg-ice">
+        <div className="absolute inset-0 bg-filigree opacity-30" aria-hidden />
         <ClawMark
           className="pointer-events-none absolute -top-10 left-10 h-[480px] w-[300px] opacity-30"
           color="#050505"

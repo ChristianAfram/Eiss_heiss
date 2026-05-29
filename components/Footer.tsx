@@ -31,14 +31,14 @@ const cols = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-bone">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" />
+      <div className="pointer-events-none absolute inset-0 bg-filigree opacity-[0.05]" />
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 py-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
           <div className="max-w-md">
             <div className="font-display text-[clamp(3.5rem,8vw,6rem)] leading-[0.85] tracking-tight">
               MONSTER
               <br />
-              <span className="text-volt">WHITE</span>
+              <span className="text-ice">WHITE</span>
             </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-mist">
               Zero sugar. Ultra energy. A concept brand built for the kind of
@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             {cols.map((c) => (
               <div key={c.heading}>
-                <h4 className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
+                <h4 className="font-mono text-[11px] uppercase tracking-[0.3em] text-ice">
                   {c.heading}
                 </h4>
                 <ul className="mt-4 space-y-3 text-sm">
@@ -58,7 +58,7 @@ export default function Footer() {
                     <li key={it.label}>
                       <Link
                         href={it.href}
-                        className="text-bone hover:text-volt"
+                        className="text-bone hover:text-ice"
                       >
                         {it.label}
                       </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-bone/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-fog">
-            © {new Date().getFullYear()} Monster White — Concept Brand · Not for Resale
+            © {new Date().getFullYear()} Monster White — Unofficial fan tribute · Not affiliated with Monster Energy
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-fog">
             Designed with chaos · Built with caffeine

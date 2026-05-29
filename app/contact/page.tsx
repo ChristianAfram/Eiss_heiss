@@ -38,10 +38,10 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-bone">
-        <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
+        <div className="absolute inset-0 bg-filigree opacity-50" aria-hidden />
         <ClawMark
           className="pointer-events-none absolute -top-12 -right-6 h-[420px] w-[300px] -scale-x-100 opacity-60"
-          color="#B8FF00"
+          color="#6dcff6"
           strokeWidth={10}
         />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
@@ -51,7 +51,7 @@ export default function ContactPage() {
           <h1 className="mt-4 font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tight">
             SEND
             <br />
-            <span className="text-volt-deep glow-volt">SIGNAL.</span>
+            <span className="text-ice-deep glow-ice">SIGNAL.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-graphite sm:text-lg">
             We&apos;re a small lab. No call center, no chatbots, no hold music.
@@ -90,7 +90,7 @@ export default function ContactPage() {
                   >
                     <div className="flex items-center justify-between font-display tracking-[0.2em]">
                       <span className="text-xl">{c.heading}</span>
-                      <span className="text-volt-deep transition-transform group-hover:translate-x-1">
+                      <span className="text-ice-deep transition-transform group-hover:translate-x-1">
                         →
                       </span>
                     </div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-10 border-2 border-ink bg-ink p-5 text-bone">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-volt">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-ice">
                   HQ · COORDINATES
                 </p>
                 <p className="mt-2 font-display text-xl leading-tight tracking-[0.04em]">
