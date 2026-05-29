@@ -1,20 +1,45 @@
-type Props = { items: string[] };
+type Props = {
+  items: string[];
+  variant?: "light" | "dark" | "ice";
+  speed?: "slow" | "normal" | "fast";
+  reverse?: boolean;
+  className?: string;
+};
 
-export default function Marquee({ items }: Props) {
-  const doubled = [...items, ...items];
+export default function Marquee({
+  items,
+  variant = "light",
+  speed = "normal",
+  reverse = false,
+  className = "",
+}: Props) {
+  const variantClass = {
+    light: "bg-bone text-ink border-y-2 border-ink",
+    dark: "bg-ink text-bone border-y-2 border-ink",
+    ice: "bg-ice text-ink border-y-2 border-ink",
+  }[variant];
+  const speedClass = reverse
+    ? "animate-marquee-rev"
+    : speed === "slow"
+      ? "animate-marquee-slow"
+      : "animate-marquee";
 
+  const tripled = [...items, ...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-espresso/15 bg-espresso py-6 text-cream">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-espresso to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-espresso to-transparent" />
-      <div className="flex w-max animate-marquee gap-12 whitespace-nowrap will-change-transform">
-        {doubled.map((label, i) => (
+    <div
+      className={`relative overflow-hidden ${variantClass} ${className}`}
+      aria-hidden
+    >
+      <div className={`flex whitespace-nowrap ${speedClass}`}>
+        {tripled.map((it, i) => (
           <span
-            key={`${label}-${i}`}
-            className="flex items-center gap-12 font-display text-3xl italic md:text-4xl"
+            key={i}
+            className="font-display text-[clamp(2rem,5vw,4rem)] leading-none px-6 py-3"
           >
-            {label}
-            <span className="inline-block h-2 w-2 rounded-full bg-amber" />
+            {it}
+            <span className="inline-block px-6 align-middle text-ice-deep">
+              ✠
+            </span>
           </span>
         ))}
       </div>

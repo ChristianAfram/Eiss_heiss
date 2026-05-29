@@ -1,55 +1,54 @@
-# EIS & HEISS Café — Website
+# MONSTER WHITE
 
-Modern, animated website for **EIS & HEISS Café** — a family-run café in Ostfildern, Stuttgart and Pforzheim serving Italian and Arabic ice cream, Boutique breakfast, Chill menus, waffles and cocktails.
+> Zero sugar. Ultra energy. Unleash the beast.
+
+A fan tribute site styled after **Monster Energy Ultra (White)** — pure white
+glossy canvas, silver baroque filigree, the iconic claw "M", a stylized
+MONSTER ENERGY ULTRA wordmark with the power-symbol O, and the signature
+"ENERGY" cyan as the only color accent. Built around a custom CSS+SVG can.
+
+This is an **unofficial fan tribute** for design / portfolio purposes.
+Not affiliated with, endorsed by, or sponsored by Monster Energy Company.
 
 ## Stack
 
-- **Next.js 15** (App Router) + **TypeScript**
-- **Tailwind CSS v4**
-- **Framer Motion** for animations
-- **Lucide** icons
-- Static export — deploys anywhere (Hostinger, Netlify, Vercel, S3…)
+- **Next.js 15** (App Router, RSC)
+- **React 19**
+- **Tailwind CSS 4**
+- **Framer Motion** for scroll reveals
+- **TypeScript**
 
-## Local development
+## Routes
+
+| Path        | What                                                    |
+|-------------|---------------------------------------------------------|
+| `/`         | Hero, manifesto, lineup, stats, lab teaser, beasts, CTA |
+| `/flavors`  | Six flavors, each with a tuned tagline + datasheet      |
+| `/lab`      | Four-phase focus curve + full ingredient datasheet      |
+| `/beasts`   | The pack — riders, makers, night-shift lunatics         |
+| `/contact`  | Channels, HQ, intent-tagged form                        |
+
+## Development
 
 ```bash
 npm install
-npm run dev
-# → http://localhost:3000
+npm run dev      # http://localhost:3000
+npm run build    # static export, all routes prerendered
+npm run lint
 ```
 
-## Deploy
+## Design language
 
-### Vercel (recommended)
+- **Palette** — Bone `#f4f6f7`, Ink `#0a0a0a`, Chrome/Silver, ENERGY cyan
+  `#6dcff6` / deep `#1f9fd1`
+- **Typography** — Bebas Neue (display), Inter (sans), JetBrains Mono (label)
+- **Motifs** — Iconic claw "M" logo, silver baroque filigree texture,
+  halftone fills, chrome-gradient lettering, marquee tickers, custom CSS can
+- **Motion** — Magnetic buttons, scroll reveals, count-ups, animated claw
+  scratches, floating cans, logo pop-in
 
-Connect the GitHub repo to Vercel — it auto-detects Next.js and builds with `npm run build`. No extra configuration needed.
+## Note on the repo name
 
-### Hostinger / any FTP-only static host
-
-```bash
-NEXT_OUTPUT=export npm run build
-```
-
-Outputs a fully static site in `out/`. Upload the contents of `out/` to the public web folder via FTP/SFTP.
-
-## Project structure
-
-```
-app/             Routes (App Router) — /, /menu, /standorte, /kontakt, /lieferung
-components/      Reusable UI (Hero, Navbar, Footer, MenuCard, …)
-lib/             Typed data: menu, locations, zones
-public/          Static assets (favicon)
-```
-
-## Editing content
-
-- **Menu items & categories:** `lib/menu.ts`
-- **Café locations:** `lib/locations.ts`
-- **Café zones:** `lib/zones.ts`
-- **Brand text on home:** `app/page.tsx`
-
-## Notes
-
-- Menu items use category-themed CSS gradient placeholders. Drop in real photos by replacing `GradientPlaceholder` with `next/image` in `components/MenuCard.tsx`.
-- The contact form uses a `mailto:` handoff — no backend required. To collect submissions server-side, swap `components/ContactForm.tsx` to post to Formspree / Resend / etc.
-- Email currently shown is `info@eis-und-heiss.de` — update once a clean domain inbox is set up.
+The git repo is still named after the previous project (`Eiss_heiss`).
+Rename via GitHub → Settings → repository name. The `package.json` and
+project identity already point at `monster-white`.

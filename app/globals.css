@@ -1,20 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #faf4ea;
-  --color-cream-soft: #fbf6ee;
-  --color-cream-dark: #f1e7d3;
-  --color-espresso: #2a1810;
-  --color-ink: #1a1410;
-  --color-amber: #d4933f;
-  --color-amber-soft: #e8b46c;
-  --color-pistachio: #b8c9a5;
-  --color-pistachio-deep: #8aa67a;
-  --color-berry: #b33a4a;
-  --color-rose: #e7a9a3;
+  /* ─── Monster Ultra White palette ─── */
+  --color-bone: #f4f6f7;
+  --color-paper: #ffffff;
+  --color-mist: #e8ebed;
+  --color-fog: #d3d8db;
+  --color-silver: #c2c8cc;
+  --color-chrome: #9aa1a6;
+  --color-ink: #0a0a0a;
+  --color-graphite: #141619;
+  --color-steel: #3f454b;
+  --color-ice: #6dcff6;        /* the "ENERGY" cyan */
+  --color-ice-deep: #1f9fd1;   /* deeper cyan for text on white */
+  --color-blaze: #00e5ff;
 
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-garamond), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-gothic), "UnifrakturCook", "Arial Black", serif;
+  --font-black: var(--font-black), "UnifrakturCook", serif;
+  --font-caps: var(--font-cinzel), Georgia, serif;
+  --font-mono: var(--font-cinzel), ui-monospace, monospace;
 }
 
 :root {
@@ -29,141 +34,201 @@ html {
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-espresso);
-  font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
+  font-family: var(--font-serif);
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--color-amber);
-  color: var(--color-ink);
 }
 
 .font-display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-/* Subtle film grain — applied as a fixed overlay above content */
-.grain::before {
-  content: "";
+.font-black-letter {
+  font-family: var(--font-black);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Labels: engraved Roman caps (Cinzel) */
+.font-mono {
+  font-family: var(--font-caps);
+  font-weight: 600;
+}
+
+/* ─── Grain overlay ───────────────────────────────── */
+.grain-fixed {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 100;
   opacity: 0.05;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
+/* ─── Custom scrollbar ────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bone); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-espresso);
+  background: var(--color-chrome);
+  border: 2px solid var(--color-bone);
   border-radius: 8px;
-  border: 2px solid var(--color-cream);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-amber);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--color-ice-deep); }
 
-/* Marquee */
+/* ─── Marquee ─────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 40s linear infinite;
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee-slow { animation: marquee 60s linear infinite; }
+.animate-marquee-rev { animation: marquee 35s linear infinite reverse; }
+
+/* ─── Cyan glow utilities ─────────────────────────── */
+.glow-ice {
+  text-shadow: 0 0 18px rgba(109, 207, 246, 0.7),
+               0 0 40px rgba(109, 207, 246, 0.35);
+}
+.glow-ice-soft { text-shadow: 0 0 14px rgba(109, 207, 246, 0.5); }
+.shadow-ice {
+  box-shadow:
+    0 0 0 1px rgba(109, 207, 246, 0.45),
+    0 0 28px -4px rgba(109, 207, 246, 0.6),
+    0 12px 30px -10px rgba(0, 0, 0, 0.25);
 }
 
-/* Gradient placeholders */
-.placeholder-breakfast {
-  background:
-    radial-gradient(circle at 30% 30%, #f7d488 0%, transparent 55%),
-    radial-gradient(circle at 75% 65%, #e2a85a 0%, transparent 55%),
-    linear-gradient(135deg, #fbe9c4, #d4933f);
-}
-.placeholder-gelato {
-  background:
-    radial-gradient(circle at 30% 30%, #ffffff 0%, transparent 50%),
-    radial-gradient(circle at 70% 65%, #d6e4c1 0%, transparent 55%),
-    linear-gradient(135deg, #f3efe2, #b8c9a5);
-}
-.placeholder-arabic {
-  background:
-    radial-gradient(circle at 35% 35%, #f1c891 0%, transparent 55%),
-    radial-gradient(circle at 70% 70%, #b8865a 0%, transparent 60%),
-    linear-gradient(135deg, #f5e6d0, #8d5a3b);
-}
-.placeholder-hot {
-  background:
-    radial-gradient(circle at 40% 35%, #6b3a22 0%, transparent 55%),
-    radial-gradient(circle at 70% 65%, #c08a5a 0%, transparent 50%),
-    linear-gradient(135deg, #4a2a1a, #2a1810);
-}
-.placeholder-cocktail {
-  background:
-    radial-gradient(circle at 35% 30%, #e7a9a3 0%, transparent 55%),
-    radial-gradient(circle at 70% 70%, #b33a4a 0%, transparent 55%),
-    linear-gradient(135deg, #f4d4cf, #8a2632);
-}
-.placeholder-shake {
-  background:
-    radial-gradient(circle at 30% 30%, #ffd9c9 0%, transparent 55%),
-    radial-gradient(circle at 75% 70%, #e7a9a3 0%, transparent 55%),
-    linear-gradient(135deg, #fff0e7, #d4933f);
-}
-.placeholder-bowl {
-  background:
-    radial-gradient(circle at 30% 30%, #c5d8b2 0%, transparent 55%),
-    radial-gradient(circle at 75% 70%, #e7a9a3 0%, transparent 50%),
-    linear-gradient(135deg, #f1ead2, #8aa67a);
-}
-.placeholder-waffle {
-  background:
-    radial-gradient(circle at 30% 30%, #f3d28a 0%, transparent 55%),
-    radial-gradient(circle at 75% 70%, #b33a4a 0%, transparent 45%),
-    linear-gradient(135deg, #f8e3b6, #a76b2c);
-}
-.placeholder-savory {
-  background:
-    radial-gradient(circle at 30% 30%, #e8c98a 0%, transparent 55%),
-    radial-gradient(circle at 75% 70%, #6b3a22 0%, transparent 55%),
-    linear-gradient(135deg, #f0dca6, #875a36);
-}
-.placeholder-special {
-  background:
-    radial-gradient(circle at 30% 30%, #f7d488 0%, transparent 50%),
-    radial-gradient(circle at 70% 70%, #b33a4a 0%, transparent 55%),
-    linear-gradient(135deg, #fbe7c8, #2a1810);
-}
-.placeholder-default {
-  background:
-    radial-gradient(circle at 30% 30%, #f7d488 0%, transparent 55%),
-    radial-gradient(circle at 70% 70%, #b8c9a5 0%, transparent 55%),
-    linear-gradient(135deg, #faf4ea, #d4933f);
+/* Chrome / metallic text */
+.text-chrome-grad {
+  background: linear-gradient(180deg, #ffffff 0%, #cfd5d9 45%, #8c9398 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(10, 10, 10, 0.9);
 }
 
-/* Subtle grain inside placeholder cards */
-.placeholder-grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
-  mix-blend-mode: overlay;
-  opacity: 0.4;
-  pointer-events: none;
+/* ─── Baroque filigree texture (Monster Ultra) ────── */
+.bg-filigree {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><g fill='none' stroke='%239aa1a6' stroke-width='1.3' stroke-linecap='round'><path d='M110 16 C 152 40 152 92 110 112 C 68 92 68 40 110 16 Z'/><path d='M110 108 C 152 128 152 180 110 204 C 68 180 68 128 110 108 Z'/><path d='M16 110 C 40 68 92 68 112 110 C 92 152 40 152 16 110 Z'/><path d='M108 110 C 128 68 180 68 204 110 C 180 152 128 152 108 110 Z'/><circle cx='110' cy='110' r='4.5'/><path d='M42 42 C 64 56 70 82 58 98'/><path d='M178 42 C 156 56 150 82 162 98'/><path d='M42 178 C 64 164 70 138 58 122'/><path d='M178 178 C 156 164 150 138 162 122'/><path d='M110 2 C 116 8 116 14 110 20 C 104 14 104 8 110 2'/></g></svg>");
+  background-size: 220px 220px;
 }
 
+/* ─── Halftone dots (claw/silver effect) ──────────── */
+.halftone {
+  background-image: radial-gradient(circle, rgba(10,10,10,0.55) 1px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+.bg-dotted {
+  background-image: radial-gradient(rgba(10,10,10,0.14) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* ─── Claw scratch animation ──────────────────────── */
+@keyframes scratch {
+  0%   { stroke-dashoffset: 800; opacity: 0; }
+  10%  { opacity: 1; }
+  60%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.5; }
+}
+.claw-stroke {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: scratch 2.4s ease-out forwards;
+}
+
+/* ─── Logo reveal ─────────────────────────────────── */
+@keyframes logo-pop {
+  0%   { opacity: 0; transform: scale(0.86); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-logo-pop { animation: logo-pop 0.9s cubic-bezier(0.18,0.89,0.32,1.28) both; }
+
+/* ─── Floating can ────────────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+
+/* ─── Pulse ring ──────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.55; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* ─── Gothic: drop cap ────────────────────────────── */
+.drop-cap::first-letter {
+  font-family: var(--font-black);
+  font-size: 4.4em;
+  line-height: 0.72;
+  float: left;
+  margin: 0.04em 0.1em 0 0;
+  color: var(--color-ink);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Gothic: stained-glass vignette ──────────────── */
+.vignette {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(109, 207, 246, 0.12), transparent 60%),
+    radial-gradient(140% 120% at 50% 100%, rgba(10, 10, 10, 0.06), transparent 55%);
+}
+
+/* ─── Gothic: ornate frame ────────────────────────── */
+.gothic-frame {
+  position: relative;
+  border: 1px solid var(--color-ink);
+  box-shadow:
+    inset 0 0 0 4px var(--color-paper),
+    inset 0 0 0 5px var(--color-silver);
+}
+.gothic-frame-inv {
+  position: relative;
+  border: 1px solid rgba(244, 246, 247, 0.5);
+  box-shadow:
+    inset 0 0 0 4px transparent,
+    inset 0 0 0 5px rgba(244, 246, 247, 0.18);
+}
+
+/* ─── Gothic: pointed-arch top ────────────────────── */
+.arch-top {
+  border-top-left-radius: 50% 22%;
+  border-top-right-radius: 50% 22%;
+}
+
+/* ─── Gothic: card (sharper, engraved) ────────────── */
+.brutal-card {
+  border: 1px solid var(--color-fog);
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f3 100%);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 3px rgba(255, 255, 255, 0.7),
+    0 18px 40px -26px rgba(0, 0, 0, 0.5);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.brutal-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.7),
+    0 32px 60px -30px rgba(0, 0, 0, 0.55);
+  border-color: var(--color-chrome);
+}
+.brutal-card-ice:hover {
+  border-color: var(--color-ice);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.7),
+    0 0 0 1px var(--color-ice),
+    0 26px 54px -28px rgba(31, 159, 209, 0.55);
+}
+
+/* ─── Reduced motion ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

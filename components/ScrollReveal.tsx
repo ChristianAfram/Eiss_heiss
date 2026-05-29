@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -8,29 +8,24 @@ type Props = {
   delay?: number;
   y?: number;
   className?: string;
+  once?: boolean;
 };
 
 export default function ScrollReveal({
   children,
   delay = 0,
-  y = 24,
-  className = "",
+  y = 30,
+  className,
+  once = true,
 }: Props) {
   const reduce = useReducedMotion();
-
-  const variants: Variants = {
-    hidden: { opacity: 0, y: reduce ? 0 : y },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
-      variants={variants}
       className={className}
+      initial={reduce ? false : { opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay }}
     >
       {children}
     </motion.div>

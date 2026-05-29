@@ -1,43 +1,57 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import {
+  EB_Garamond,
+  Cinzel,
+  Grenze_Gotisch,
+  UnifrakturCook,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GrainOverlay from "@/components/GrainOverlay";
 
-const fraunces = Fraunces({
+const gothic = Grenze_Gotisch({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz", "SOFT"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-gothic",
   display: "swap",
 });
 
-const inter = Inter({
+const blackletter = UnifrakturCook({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["700"],
+  variable: "--font-black",
+  display: "swap",
+});
+
+const garamond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-garamond",
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-cinzel",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "EIS & HEISS Café — Mehr als ein Café. Ein Erlebnis für die ganze Familie.",
+  title: "MONSTER WHITE — Zero Zucker. Ultra Energy. Unleash The Beast.",
   description:
-    "Italienisches und arabisches Eis, Boutique-Frühstück, Desserts und Cocktails — in Ostfildern, Stuttgart und Pforzheim. Ein Ort voller Genuss und familiärer Wärme.",
+    "MONSTER WHITE — an unofficial gothic fan tribute to Monster Energy Ultra. Zero sugar, full chaos, cathedral-grade typography.",
   keywords: [
-    "Eis",
-    "Café",
-    "Ostfildern",
-    "Stuttgart",
-    "Pforzheim",
-    "Frühstück",
-    "Italienisches Eis",
-    "Arabisches Eis",
-    "Waffeln",
-    "Cocktails",
+    "Monster White",
+    "Ultra",
+    "Energy Drink",
+    "Zero Sugar",
+    "Gothic",
+    "Beast Mode",
   ],
   openGraph: {
-    title: "EIS & HEISS Café",
-    description:
-      "Italienisches und arabisches Eis, Boutique-Frühstück, Desserts und Cocktails.",
-    locale: "de_DE",
+    title: "MONSTER WHITE",
+    description: "Zero Zucker. Ultra Energy. Unleash The Beast.",
     type: "website",
   },
 };
@@ -46,8 +60,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="grain min-h-screen bg-cream text-espresso">
+    <html
+      lang="en"
+      className={`${gothic.variable} ${blackletter.variable} ${garamond.variable} ${cinzel.variable}`}
+    >
+      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-ink selection:text-ice">
+        <GrainOverlay />
         <Navbar />
         <main className="pt-[var(--nav-h)]">{children}</main>
         <Footer />
