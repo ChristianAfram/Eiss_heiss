@@ -1,44 +1,57 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
+import {
+  EB_Garamond,
+  Cinzel,
+  Grenze_Gotisch,
+  UnifrakturCook,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GrainOverlay from "@/components/GrainOverlay";
 
-const inter = Inter({
+const gothic = Grenze_Gotisch({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-gothic",
   display: "swap",
 });
 
-const bebas = Bebas_Neue({
+const blackletter = UnifrakturCook({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-bebas",
+  weight: ["700"],
+  variable: "--font-black",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const garamond = EB_Garamond({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-garamond",
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-cinzel",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "MONSTER WHITE — Zero Sugar. Ultra Energy. Unleash The Beast.",
+  title: "MONSTER WHITE — Zero Zucker. Ultra Energy. Unleash The Beast.",
   description:
-    "MONSTER WHITE is the white-out flavor of beast mode. Zero sugar, full chaos. Ultra energy concept brand.",
+    "MONSTER WHITE — an unofficial gothic fan tribute to Monster Energy Ultra. Zero sugar, full chaos, cathedral-grade typography.",
   keywords: [
     "Monster White",
     "Ultra",
     "Energy Drink",
     "Zero Sugar",
+    "Gothic",
     "Beast Mode",
-    "Concept Brand",
   ],
   openGraph: {
     title: "MONSTER WHITE",
-    description: "Zero Sugar. Ultra Energy. Unleash The Beast.",
+    description: "Zero Zucker. Ultra Energy. Unleash The Beast.",
     type: "website",
   },
 };
@@ -49,9 +62,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${bebas.variable} ${mono.variable}`}
+      className={`${gothic.variable} ${blackletter.variable} ${garamond.variable} ${cinzel.variable}`}
     >
-      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-ice selection:text-ink">
+      <body className="min-h-screen bg-bone text-ink antialiased selection:bg-ink selection:text-ice">
         <GrainOverlay />
         <Navbar />
         <main className="pt-[var(--nav-h)]">{children}</main>

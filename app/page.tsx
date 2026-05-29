@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ClawMark from "@/components/ClawMark";
 import ClawLogo from "@/components/ClawLogo";
+import GothicArch from "@/components/GothicArch";
+import OrnamentDivider from "@/components/OrnamentDivider";
 import MonsterCan from "@/components/MonsterCan";
 import Marquee from "@/components/Marquee";
 import MagneticButton from "@/components/MagneticButton";
@@ -17,47 +19,46 @@ export default function Home() {
   return (
     <>
       {/* ───────────── HERO ───────────── */}
-      <section className="relative overflow-hidden bg-bone">
+      <section className="relative overflow-hidden bg-bone vignette">
         <div className="absolute inset-0 bg-filigree opacity-50" aria-hidden />
         <ClawLogo
           className="pointer-events-none absolute left-1/2 top-1/2 h-[120vh] w-[105vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.05]"
           tone="black"
           halftone={false}
         />
-        <ClawMark
-          className="pointer-events-none absolute -top-10 -left-16 h-[420px] w-[320px] opacity-40 sm:opacity-50"
-          color="#6dcff6"
-          strokeWidth={10}
-        />
 
-        <div className="relative mx-auto grid min-h-[88vh] max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        <div className="relative mx-auto grid min-h-[90vh] max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
-            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-steel">
+            <p className="font-mono text-[12px] uppercase tracking-[0.4em] text-steel">
               <span className="mr-3 inline-block h-2 w-2 translate-y-[-2px] bg-ice-deep align-middle" />
-              ZERO ZUCKER · ULTRA ENERGY
+              Zero Zucker · Ultra Energy
             </p>
 
-            <h1 className="mt-6 font-display leading-[0.8] tracking-tight">
-              <span className="block text-[clamp(4.5rem,16vw,12rem)] text-ink">
+            <h1 className="mt-6 leading-[0.78]">
+              <span className="block font-display text-[clamp(4rem,15vw,11rem)] text-ink">
                 MONSTER
               </span>
-              <span className="relative block w-fit text-[clamp(4.5rem,16vw,12rem)]">
-                <span className="relative z-10 text-chrome-grad">WHITE</span>
+              <span className="relative -mt-2 block w-fit">
+                <span className="font-black-letter text-[clamp(4.5rem,15vw,11rem)] text-chrome-grad">
+                  White
+                </span>
                 <span
                   aria-hidden
-                  className="absolute -bottom-1 left-0 z-0 h-[8px] w-full bg-ice-deep"
+                  className="absolute -bottom-2 left-1 z-0 h-[6px] w-[88%] bg-ice-deep"
                 />
               </span>
             </h1>
 
-            <p className="mt-5 font-display text-[clamp(0.9rem,2vw,1.3rem)] tracking-[0.4em] text-ice-deep">
-              ENERGY · ULTRA · ZERO
+            <p className="mt-6 font-display text-[clamp(0.9rem,2vw,1.35rem)] tracking-[0.45em] text-ice-deep">
+              Energy · Ultra · Zero
             </p>
 
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-graphite sm:text-lg">
-              The white-out flavor of beast mode. Engineered for the kind of
-              chaos you can drink — citrus snap, glacial finish, and 160mg of
-              please-don&apos;t-talk-to-me-yet.
+            <OrnamentDivider className="mt-7 max-w-sm justify-start" tone="ink" />
+
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-graphite sm:text-xl">
+              The white-out hymn of beast mode. Brewed for the kind of chaos you
+              can drink — glacial citrus, cathedral-quiet finish, and 160mg of
+              do-not-disturb.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -65,32 +66,32 @@ export default function Home() {
                 Taste The White Out
               </MagneticButton>
               <MagneticButton href="/lab" variant="ghost" size="lg">
-                See the Science
+                See the Rite
               </MagneticButton>
             </div>
 
-            <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t-2 border-ink pt-6">
+            <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-ink/30 pt-6">
               <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
+                <dt className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
                   Caffeine
                 </dt>
-                <dd className="mt-1 font-display text-3xl">
+                <dd className="mt-1 font-display text-4xl">
                   160<span className="text-ice-deep">MG</span>
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
+                <dt className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
                   Sugar
                 </dt>
-                <dd className="mt-1 font-display text-3xl">
+                <dd className="mt-1 font-display text-4xl">
                   00<span className="text-ice-deep">G</span>
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
+                <dt className="font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
                   Calories
                 </dt>
-                <dd className="mt-1 font-display text-3xl">
+                <dd className="mt-1 font-display text-4xl">
                   10<span className="text-ice-deep">KCAL</span>
                 </dd>
               </div>
@@ -98,21 +99,18 @@ export default function Home() {
           </div>
 
           <div className="relative lg:col-span-5">
-            <div className="relative mx-auto flex max-w-md items-center justify-center">
+            <div className="relative mx-auto flex min-h-[560px] max-w-md items-center justify-center">
+              <GothicArch className="absolute inset-0 h-full w-full opacity-80" />
               <div
                 aria-hidden
-                className="absolute inset-0 -z-10 bg-gradient-to-br from-ice/40 via-bone to-bone blur-3xl"
+                className="absolute inset-0 -z-10 bg-gradient-to-br from-ice/30 via-bone to-bone blur-3xl"
               />
-              <div className="absolute inset-0 -z-10 flex items-center justify-center">
-                <div className="h-72 w-72 rounded-full border-2 border-ink/20" />
-                <div className="absolute h-72 w-72 rounded-full border-2 border-ink/20 pulse-ring" />
-              </div>
-              <MonsterCan variant="white" floating />
+              <MonsterCan variant="white" floating className="mt-6" />
             </div>
 
-            <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-steel">
+            <div className="mt-8 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.25em] text-steel">
               <span>SKU · MW–WHT–500</span>
-              <span>BATCH · 2026/Q2</span>
+              <span>Batch · MMXXVI</span>
               <span>EUR / DE</span>
             </div>
           </div>
@@ -144,24 +142,24 @@ export default function Home() {
               />
             </ScrollReveal>
             <ScrollReveal delay={0.1} className="lg:col-span-7">
-              <p className="text-xl leading-relaxed text-graphite sm:text-2xl">
-                We&apos;re not selling a beverage. We&apos;re selling a
+              <p className="drop-cap text-xl leading-relaxed text-graphite sm:text-2xl">
+                We are not selling a beverage. We are consecrating a
                 <span className="bg-ink px-2 text-ice"> mode </span>—
                 the second between the alarm and the answer, between the
                 drop-in and the line, between the cursor and the verdict.
               </p>
-              <p className="mt-6 text-base leading-relaxed text-steel">
-                MONSTER WHITE is engineered for that second. White can,
+              <p className="mt-6 text-lg leading-relaxed text-steel">
+                MONSTER WHITE is engineered for that second. White reliquary,
                 glacial citrus, zero sugar, and enough caffeine to make
-                Tuesday feel like Friday. Built for makers, athletes,
+                Tuesday feel like a feast day. Built for makers, athletes,
                 night-shift lunatics, and anyone who treats <em>good
-                enough</em> as a personal insult.
+                enough</em> as a personal heresy.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {["INVENTED", "BREWED", "CHILLED", "UNLEASHED"].map((t) => (
                   <div
                     key={t}
-                    className="border-2 border-ink bg-paper p-4 text-center"
+                    className="gothic-frame bg-paper p-4 text-center"
                   >
                     <span className="font-display tracking-[0.2em]">{t}</span>
                   </div>
@@ -173,8 +171,8 @@ export default function Home() {
       </section>
 
       {/* ───────────── FLAVORS ───────────── */}
-      <section className="relative bg-mist">
-        <div className="absolute inset-0 bg-dotted opacity-50" aria-hidden />
+      <section className="relative bg-mist vignette">
+        <div className="absolute inset-0 bg-filigree opacity-30" aria-hidden />
         <div className="relative mx-auto max-w-[1400px] px-5 py-24 sm:px-8 lg:py-32">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <ScrollReveal>
@@ -351,41 +349,38 @@ export default function Home() {
       />
 
       {/* ───────────── CTA ───────────── */}
-      <section className="relative overflow-hidden bg-ice">
-        <div className="absolute inset-0 bg-filigree opacity-30" aria-hidden />
-        <ClawMark
-          className="pointer-events-none absolute -top-10 left-10 h-[480px] w-[300px] opacity-30"
-          color="#050505"
-          strokeWidth={12}
-        />
-        <ClawMark
-          className="pointer-events-none absolute -bottom-10 right-10 h-[480px] w-[300px] -scale-x-100 opacity-30"
-          color="#050505"
-          strokeWidth={12}
+      <section className="relative overflow-hidden bg-ink text-bone vignette">
+        <div className="absolute inset-0 bg-filigree opacity-[0.08]" aria-hidden />
+        <ClawLogo
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[0.06]"
+          tone="white"
+          halftone={false}
         />
         <div className="relative mx-auto flex max-w-[1400px] flex-col items-center px-5 py-28 text-center sm:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-ink">
-            ★ FINAL CALL ★
+          <p className="font-mono text-[12px] uppercase tracking-[0.4em] text-ice">
+            ✠ Final Rite ✠
           </p>
-          <h2 className="mt-4 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.85] tracking-tight text-ink">
+          <h2 className="mt-4 font-display text-[clamp(3rem,11vw,9rem)] leading-[0.82] tracking-tight">
             UNLEASH
             <br />
-            <span className="italic">THE</span> BEAST.
+            <span className="font-black-letter text-chrome-grad">the</span>{" "}
+            BEAST.
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/80">
-            One can. Ninety minutes. The next version of you. You can find it
-            wherever serious beverages live.
+          <OrnamentDivider className="mt-8" tone="bone" />
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-mist">
+            One can. Ninety minutes. The next version of you. Found wherever
+            serious beverages keep vigil.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/flavors"
-              className="inline-flex items-center gap-2 border-4 border-ink bg-bone px-8 py-4 font-display tracking-[0.2em] text-ink transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#050505]"
+              className="inline-flex items-center gap-2 border border-ice bg-ice px-8 py-4 font-display tracking-[0.2em] text-ink transition-transform hover:-translate-y-1"
             >
               FIND YOUR FLAVOR →
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border-4 border-ink bg-ink px-8 py-4 font-display tracking-[0.2em] text-bone transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#fff]"
+              className="inline-flex items-center gap-2 border border-bone/60 bg-transparent px-8 py-4 font-display tracking-[0.2em] text-bone transition-colors hover:bg-bone hover:text-ink"
             >
               GET WHOLESALE
             </Link>

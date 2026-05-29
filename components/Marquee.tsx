@@ -38,7 +38,7 @@ export default function Marquee({
           >
             {it}
             <span className="inline-block px-6 align-middle text-ice-deep">
-              ✦
+              ✠
             </span>
           </span>
         ))}
